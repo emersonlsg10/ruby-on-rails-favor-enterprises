@@ -1,0 +1,1178 @@
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (14.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateEnterprises (20210124183135)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "enterprises" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "is_like" boolean, "id_enterprise" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20210124183135"]]
+  [1m[36mTRANSACTION (10.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-01-24 18:34:48.971979"], ["updated_at", "2021-01-24 18:34:48.971979"]]
+  [1m[36mTRANSACTION (8.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2021-01-24 15:35:39 -0300
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.7.0/gems/railties-6.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.7.0/gems/railties-6.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 27.2ms | Allocations: 407)
+Completed 200 OK in 85ms (Views: 46.5ms | ActiveRecord: 0.0ms | Allocations: 3477)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-01-24 15:35:40 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/enterprises" for 127.0.0.1 at 2021-01-24 15:36:20 -0300
+Processing by EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 3.2ms | ActiveRecord: 0.4ms | Allocations: 1118)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEnterprise Create (0.6ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Predio X"], ["is_like", 1], ["id_enterprise", 15], ["created_at", "2021-01-24 18:39:30.686965"], ["updated_at", "2021-01-24 18:39:30.686965"]]
+  [1m[36mTRANSACTION (15.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/enterprises" for 127.0.0.1 at 2021-01-24 15:39:45 -0300
+Processing by EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 21ms (Views: 19.3ms | ActiveRecord: 1.5ms | Allocations: 4265)
+
+
+Started GET "/enterprises" for 127.0.0.1 at 2021-01-24 15:40:17 -0300
+Processing by EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.2ms | Allocations: 698)
+
+
+Started GET "/enterprises/0" for 127.0.0.1 at 2021-01-24 15:40:22 -0300
+Processing by EnterprisesController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/enterprises_controller.rb:44:in `set_enterprise'
+Completed 404 Not Found in 13ms (ActiveRecord: 0.4ms | Allocations: 1972)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Enterprise with 'id'=0):
+  
+app/controllers/enterprises_controller.rb:44:in `set_enterprise'
+Started GET "/enterprises/1" for 127.0.0.1 at 2021-01-24 15:40:31 -0300
+Processing by EnterprisesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/enterprises_controller.rb:44:in `set_enterprise'
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 585)
+
+
+Started GET "/enterprises" for 127.0.0.1 at 2021-01-24 15:40:35 -0300
+Processing by EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.3ms | Allocations: 717)
+
+
+Started GET "/enterprises/12" for 127.0.0.1 at 2021-01-24 15:40:40 -0300
+Processing by EnterprisesController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/enterprises_controller.rb:44:in `set_enterprise'
+Completed 404 Not Found in 4ms (ActiveRecord: 0.2ms | Allocations: 477)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Enterprise with 'id'=12):
+  
+app/controllers/enterprises_controller.rb:44:in `set_enterprise'
+Started GET "/enterprises" for 127.0.0.1 at 2021-01-24 15:40:51 -0300
+Processing by EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 7ms (Views: 4.3ms | ActiveRecord: 0.2ms | Allocations: 698)
+
+
+Started GET "/enterprises/1" for 127.0.0.1 at 2021-01-24 15:40:56 -0300
+Processing by EnterprisesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/enterprises_controller.rb:44:in `set_enterprise'
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.2ms | Allocations: 584)
+
+
+Started GET "/enterprises" for 127.0.0.1 at 2021-01-24 15:40:58 -0300
+Processing by EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms | Allocations: 698)
+
+
+Started GET "/enterprises" for 127.0.0.1 at 2021-01-24 15:45:46 -0300
+  
+ActionController::RoutingError (uninitialized constant EnterprisesController):
+  
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 15:45:58 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enterprises"):
+  
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 15:48:08 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 35ms (Views: 31.8ms | ActiveRecord: 3.8ms | Allocations: 4491)
+
+
+Started GET "/" for 127.0.0.1 at 2021-01-24 15:54:07 -0300
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/2.7.0/gems/railties-6.1.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/2.7.0/gems/railties-6.1.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 19.1ms | Allocations: 295)
+Completed 200 OK in 34ms (Views: 24.9ms | ActiveRecord: 0.0ms | Allocations: 2288)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 15:54:10 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 29ms (Views: 23.3ms | ActiveRecord: 2.1ms | Allocations: 4625)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:05:28 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+  [1m[36mEnterprise Load (1.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 47ms (Views: 45.4ms | ActiveRecord: 2.7ms | Allocations: 1288)
+
+
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEnterprise Create (2.8ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Condomínio Life Park Apto AP0012GITF"], ["is_like", 1], ["id_enterprise", 17921], ["created_at", "2021-01-24 21:07:48.734344"], ["updated_at", "2021-01-24 21:07:48.734344"]]
+  [1m[36mTRANSACTION (13.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:08:00 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.2ms | Allocations: 826)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:13:30 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+  [1m[36mEnterprise Load (1.0ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 164ms (Views: 162.5ms | ActiveRecord: 3.9ms | Allocations: 1376)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:18:32 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 33ms (Views: 30.7ms | ActiveRecord: 0.4ms | Allocations: 807)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:19:00 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.6ms | Allocations: 807)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:21:40 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.3ms | Allocations: 807)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:24:22 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.2ms | Allocations: 807)
+
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mEnterprise Create (0.5ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Parque Canoas Allegro Apto 707"], ["is_like", 1], ["id_enterprise", 2054], ["created_at", "2021-01-24 21:27:05.048678"], ["updated_at", "2021-01-24 21:27:05.048678"]]
+  [1m[36mTRANSACTION (16.4ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:28:11 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 19ms (Views: 17.9ms | ActiveRecord: 0.5ms | Allocations: 916)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:37:57 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 16.3ms | ActiveRecord: 1.3ms | Allocations: 1486)
+
+
+Started PUT "/api/v1/enterprises/undefined" for 127.0.0.1 at 2021-01-24 18:38:07 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>true, "id_enterprise"=>"17922", "id"=>"undefined", "enterprise"=>{"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>true, "id_enterprise"=>"17922"}}
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+Completed 404 Not Found in 41ms (ActiveRecord: 0.3ms | Allocations: 1954)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Enterprise with 'id'=undefined):
+  
+app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:39:33 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 46ms (Views: 44.8ms | ActiveRecord: 0.6ms | Allocations: 1073)
+
+
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:39:42 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>true, "id_enterprise"=>"17922", "enterprise"=>{"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>true, "id_enterprise"=>"17922"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (2.2ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Condomínio Life Park Apto AP0011GITF"], ["is_like", 1], ["id_enterprise", 17922], ["created_at", "2021-01-24 21:39:42.697529"], ["updated_at", "2021-01-24 21:39:42.697529"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (18.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 21.3ms | Allocations: 5130)
+
+
+  
+NoMethodError (undefined method `enterprise_url' for #<Api::V1::EnterprisesController:0x000000000072d8>):
+  
+app/controllers/api/v1/enterprises_controller.rb:21:in `create'
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:40:51 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.2ms | Allocations: 1025)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-01-24 18:40:51 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:44:43 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0010GITF", "is_like"=>true, "id_enterprise"=>"17923", "enterprise"=>{"name"=>"Condomínio Life Park Apto AP0010GITF", "is_like"=>true, "id_enterprise"=>"17923"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (6.8ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Condomínio Life Park Apto AP0010GITF"], ["is_like", 1], ["id_enterprise", 17923], ["created_at", "2021-01-24 21:44:44.026707"], ["updated_at", "2021-01-24 21:44:44.026707"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (24.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 500 Internal Server Error in 86ms (ActiveRecord: 34.7ms | Allocations: 7016)
+
+
+  
+NoMethodError (undefined method `respond_with' for #<Api::V1::EnterprisesController:0x000000000083b8>
+Did you mean?  respond_to?):
+  
+app/controllers/api/v1/enterprises_controller.rb:21:in `create'
+Started PUT "/api/v1/enterprises/undefined" for 127.0.0.1 at 2021-01-24 18:45:51 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921", "id"=>"undefined", "enterprise"=>{"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921"}}
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.5ms | Allocations: 617)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Enterprise with 'id'=undefined):
+  
+app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:47:55 -0300
+  
+SyntaxError (/home/emerson/favor-enterprises/backend/app/controllers/api/v1/enterprises_controller.rb:21: syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+...tatus: :created, respond_with :api, :v1, @enterprise
+...                              ^
+):
+  
+app/controllers/api/v1/enterprises_controller.rb:21: syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+app/controllers/api/v1/enterprises_controller.rb:21: syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:48:08 -0300
+  
+ActionController::RoutingError (uninitialized constant Api::V1::EnterprisesController):
+  
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:48:47 -0300
+  
+SyntaxError (/home/emerson/favor-enterprises/backend/app/controllers/api/v1/enterprises_controller.rb:21: syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+...tatus: :created, respond_with :api, :v1
+...                              ^
+):
+  
+app/controllers/api/v1/enterprises_controller.rb:21: syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+app/controllers/api/v1/enterprises_controller.rb:21: syntax error, unexpected symbol literal, expecting `do' or '{' or '('
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:50:20 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 20ms (Views: 17.0ms | ActiveRecord: 2.3ms | Allocations: 4917)
+
+
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:50:26 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"MRSP 495 Apto 505", "is_like"=>true, "id_enterprise"=>"2023", "enterprise"=>{"name"=>"MRSP 495 Apto 505", "is_like"=>true, "id_enterprise"=>"2023"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (2.0ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "MRSP 495 Apto 505"], ["is_like", 1], ["id_enterprise", 2023], ["created_at", "2021-01-24 21:50:26.225628"], ["updated_at", "2021-01-24 21:50:26.225628"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (12.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 201 Created in 41ms (Views: 8.9ms | ActiveRecord: 14.2ms | Allocations: 3719)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:51:03 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.6ms | Allocations: 1244)
+
+
+Started PUT "/api/v1/enterprises/undefined" for 127.0.0.1 at 2021-01-24 18:51:39 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>false, "id_enterprise"=>"17922", "id"=>"undefined", "enterprise"=>{"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>false, "id_enterprise"=>"17922"}}
+  [1m[36mEnterprise Load (0.9ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+Completed 404 Not Found in 10ms (ActiveRecord: 0.9ms | Allocations: 585)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Enterprise with 'id'=undefined):
+  
+app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:55:13 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>false, "id_enterprise"=>"17922", "enterprise"=>{"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>false, "id_enterprise"=>"17922"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (0.9ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Condomínio Life Park Apto AP0011GITF"], ["is_like", 0], ["id_enterprise", 17922], ["created_at", "2021-01-24 21:55:13.111725"], ["updated_at", "2021-01-24 21:55:13.111725"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (18.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 201 Created in 56ms (Views: 0.8ms | ActiveRecord: 19.3ms | Allocations: 3728)
+
+
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:55:21 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921", "enterprise"=>{"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (8.5ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Condomínio Life Park Apto AP0012GITF"], ["is_like", 0], ["id_enterprise", 17921], ["created_at", "2021-01-24 21:55:21.313490"], ["updated_at", "2021-01-24 21:55:21.313490"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (11.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 201 Created in 45ms (Views: 0.6ms | ActiveRecord: 19.6ms | Allocations: 3710)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:55:30 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.4ms | Allocations: 1461)
+
+
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:56:23 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921", "enterprise"=>{"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (2.4ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Condomínio Life Park Apto AP0012GITF"], ["is_like", 0], ["id_enterprise", 17921], ["created_at", "2021-01-24 21:56:23.029695"], ["updated_at", "2021-01-24 21:56:23.029695"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (17.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 201 Created in 51ms (Views: 3.3ms | ActiveRecord: 19.8ms | Allocations: 3704)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:56:49 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 30ms (Views: 28.6ms | ActiveRecord: 0.5ms | Allocations: 1572)
+
+
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:57:11 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921", "enterprise"=>{"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (0.4ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Condomínio Life Park Apto AP0012GITF"], ["is_like", 0], ["id_enterprise", 17921], ["created_at", "2021-01-24 21:57:11.488418"], ["updated_at", "2021-01-24 21:57:11.488418"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (15.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 201 Created in 42ms (Views: 3.2ms | ActiveRecord: 16.0ms | Allocations: 3104)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:57:58 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 20ms (Views: 18.8ms | ActiveRecord: 0.5ms | Allocations: 1679)
+
+
+Started PUT "/api/v1/enterprises/2" for 127.0.0.1 at 2021-01-24 18:58:29 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921", "id"=>"2", "enterprise"=>{"id"=>"2", "name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921"}}
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (7.0ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 0], ["updated_at", "2021-01-24 21:58:29.557921"], ["id", 2]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (19.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 59ms (Views: 0.9ms | ActiveRecord: 26.6ms | Allocations: 4214)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 18:58:37 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.3ms | Allocations: 1680)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:00:35 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 79ms (Views: 76.0ms | ActiveRecord: 0.5ms | Allocations: 1679)
+
+
+Started PUT "/api/v1/enterprises/4" for 127.0.0.1 at 2021-01-24 19:00:39 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:00:39 -0300
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>false, "id_enterprise"=>"17922", "id"=>"4", "enterprise"=>{"id"=>"4", "name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>false, "id_enterprise"=>"17922"}}
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+Processing by Api::V1::EnterprisesController#index as HTML
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 64ms (Views: 41.5ms | ActiveRecord: 4.9ms | Allocations: 2617)
+
+
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (10.8ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 0], ["updated_at", "2021-01-24 22:00:39.724375"], ["id", 4]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (17.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 132ms (Views: 0.9ms | ActiveRecord: 28.2ms | Allocations: 5765)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:01:53 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.4ms | Allocations: 1679)
+
+
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-01-24 19:01:54 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:02:03 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 8.0ms | ActiveRecord: 0.3ms | Allocations: 1678)
+
+
+Started PUT "/api/v1/enterprises/2" for 127.0.0.1 at 2021-01-24 19:03:54 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>true, "id_enterprise"=>"17921", "id"=>"2", "enterprise"=>{"id"=>"2", "name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>true, "id_enterprise"=>"17921"}}
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (15.9ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 1], ["updated_at", "2021-01-24 22:03:54.164428"], ["id", 2]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (15.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 49ms (Views: 0.6ms | ActiveRecord: 31.9ms | Allocations: 4177)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:03:54 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.5ms | Allocations: 1679)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:04:15 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (1.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 25ms (Views: 22.9ms | ActiveRecord: 1.6ms | Allocations: 1679)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:06:35 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 16.2ms | ActiveRecord: 0.4ms | Allocations: 1679)
+
+
+Started PUT "/api/v1/enterprises/4" for 127.0.0.1 at 2021-01-24 19:06:44 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>true, "id_enterprise"=>"17922", "id"=>"4", "enterprise"=>{"id"=>"4", "name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>true, "id_enterprise"=>"17922"}}
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (6.5ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 1], ["updated_at", "2021-01-24 22:06:44.161821"], ["id", 4]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (33.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 68ms (Views: 0.8ms | ActiveRecord: 40.4ms | Allocations: 4177)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:06:44 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.7ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 9ms (Views: 7.3ms | ActiveRecord: 0.7ms | Allocations: 1679)
+
+
+Started PUT "/api/v1/enterprises/2" for 127.0.0.1 at 2021-01-24 19:06:48 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921", "id"=>"2", "enterprise"=>{"id"=>"2", "name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921"}}
+  [1m[36mEnterprise Load (1.8ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (6.9ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 0], ["updated_at", "2021-01-24 22:06:48.615242"], ["id", 2]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (15.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 49ms (Views: 5.4ms | ActiveRecord: 24.5ms | Allocations: 4181)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:06:49 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.6ms | Allocations: 1680)
+
+
+Started PUT "/api/v1/enterprises/2" for 127.0.0.1 at 2021-01-24 19:07:06 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>true, "id_enterprise"=>"17921", "id"=>"2", "enterprise"=>{"id"=>"2", "name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>true, "id_enterprise"=>"17921"}}
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (19.1ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 1], ["updated_at", "2021-01-24 22:07:06.656142"], ["id", 2]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (48.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 159ms (Views: 0.9ms | ActiveRecord: 68.1ms | Allocations: 4181)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:07 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.5ms | Allocations: 1679)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:09 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.4ms | Allocations: 1679)
+
+
+Started PUT "/api/v1/enterprises/5" for 127.0.0.1 at 2021-01-24 19:07:12 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0010GITF", "is_like"=>false, "id_enterprise"=>"17923", "id"=>"5", "enterprise"=>{"id"=>"5", "name"=>"Condomínio Life Park Apto AP0010GITF", "is_like"=>false, "id_enterprise"=>"17923"}}
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (4.9ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 0], ["updated_at", "2021-01-24 22:07:12.662604"], ["id", 5]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (18.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 38ms (Views: 0.6ms | ActiveRecord: 23.2ms | Allocations: 3586)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:12 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 10.2ms | ActiveRecord: 0.3ms | Allocations: 1679)
+
+
+Started PUT "/api/v1/enterprises/4" for 127.0.0.1 at 2021-01-24 19:07:16 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>false, "id_enterprise"=>"17922", "id"=>"4", "enterprise"=>{"id"=>"4", "name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>false, "id_enterprise"=>"17922"}}
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (2.4ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 0], ["updated_at", "2021-01-24 22:07:16.011344"], ["id", 4]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (18.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 60ms (Views: 0.8ms | ActiveRecord: 20.8ms | Allocations: 4177)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:16 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 18ms (Views: 17.1ms | ActiveRecord: 0.5ms | Allocations: 1679)
+
+
+Started PUT "/api/v1/enterprises/2" for 127.0.0.1 at 2021-01-24 19:07:18 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921", "id"=>"2", "enterprise"=>{"id"=>"2", "name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921"}}
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (7.8ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 0], ["updated_at", "2021-01-24 22:07:18.507416"], ["id", 2]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (20.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 49ms (Views: 0.8ms | ActiveRecord: 28.3ms | Allocations: 4178)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:18 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 22ms (Views: 20.2ms | ActiveRecord: 0.6ms | Allocations: 1679)
+
+
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:23 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"NSDGFA 50 Casa 06", "is_like"=>true, "id_enterprise"=>"2962", "enterprise"=>{"name"=>"NSDGFA 50 Casa 06", "is_like"=>true, "id_enterprise"=>"2962"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (13.5ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "NSDGFA 50 Casa 06"], ["is_like", 1], ["id_enterprise", 2962], ["created_at", "2021-01-24 22:07:23.211293"], ["updated_at", "2021-01-24 22:07:23.211293"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 201 Created in 37ms (Views: 0.6ms | ActiveRecord: 22.5ms | Allocations: 3703)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:23 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 9.3ms | ActiveRecord: 0.2ms | Allocations: 1787)
+
+
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:27 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"MVV 181 Casa", "is_like"=>true, "id_enterprise"=>"17086", "enterprise"=>{"name"=>"MVV 181 Casa", "is_like"=>true, "id_enterprise"=>"17086"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (1.7ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "MVV 181 Casa"], ["is_like", 1], ["id_enterprise", 17086], ["created_at", "2021-01-24 22:07:27.311316"], ["updated_at", "2021-01-24 22:07:27.311316"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (20.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 201 Created in 38ms (Views: 0.6ms | ActiveRecord: 22.8ms | Allocations: 3679)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:27 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 15ms (Views: 13.5ms | ActiveRecord: 0.3ms | Allocations: 1895)
+
+
+Started PUT "/api/v1/enterprises/4" for 127.0.0.1 at 2021-01-24 19:07:31 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>true, "id_enterprise"=>"17922", "id"=>"4", "enterprise"=>{"id"=>"4", "name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>true, "id_enterprise"=>"17922"}}
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (8.2ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 1], ["updated_at", "2021-01-24 22:07:31.515386"], ["id", 4]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (13.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 38ms (Views: 0.6ms | ActiveRecord: 21.8ms | Allocations: 3675)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:31 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.3ms | Allocations: 1895)
+
+
+Started PUT "/api/v1/enterprises/5" for 127.0.0.1 at 2021-01-24 19:07:32 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0010GITF", "is_like"=>true, "id_enterprise"=>"17923", "id"=>"5", "enterprise"=>{"id"=>"5", "name"=>"Condomínio Life Park Apto AP0010GITF", "is_like"=>true, "id_enterprise"=>"17923"}}
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (0.6ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 1], ["updated_at", "2021-01-24 22:07:32.980664"], ["id", 5]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (16.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 40ms (Views: 0.6ms | ActiveRecord: 17.8ms | Allocations: 4177)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:33 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 19ms (Views: 17.4ms | ActiveRecord: 0.5ms | Allocations: 1895)
+
+
+Started PUT "/api/v1/enterprises/2" for 127.0.0.1 at 2021-01-24 19:07:34 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>true, "id_enterprise"=>"17921", "id"=>"2", "enterprise"=>{"id"=>"2", "name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>true, "id_enterprise"=>"17921"}}
+  [1m[36mEnterprise Load (2.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (21.4ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 1], ["updated_at", "2021-01-24 22:07:34.411710"], ["id", 2]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (20.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 88ms (Views: 4.2ms | ActiveRecord: 44.1ms | Allocations: 4177)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:34 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.9ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 26ms (Views: 23.8ms | ActiveRecord: 0.9ms | Allocations: 1895)
+
+
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:36 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0009GITF", "is_like"=>true, "id_enterprise"=>"17924", "enterprise"=>{"name"=>"Condomínio Life Park Apto AP0009GITF", "is_like"=>true, "id_enterprise"=>"17924"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (1.1ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Condomínio Life Park Apto AP0009GITF"], ["is_like", 1], ["id_enterprise", 17924], ["created_at", "2021-01-24 22:07:36.507280"], ["updated_at", "2021-01-24 22:07:36.507280"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (12.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 201 Created in 37ms (Views: 4.0ms | ActiveRecord: 13.9ms | Allocations: 3704)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:36 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.4ms | Allocations: 2004)
+
+
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:37 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0013GITF", "is_like"=>true, "id_enterprise"=>"17920", "enterprise"=>{"name"=>"Condomínio Life Park Apto AP0013GITF", "is_like"=>true, "id_enterprise"=>"17920"}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (0.5ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Condomínio Life Park Apto AP0013GITF"], ["is_like", 1], ["id_enterprise", 17920], ["created_at", "2021-01-24 22:07:37.876263"], ["updated_at", "2021-01-24 22:07:37.876263"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (15.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 201 Created in 42ms (Views: 1.2ms | ActiveRecord: 15.9ms | Allocations: 3704)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:07:38 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.8ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 25ms (Views: 23.4ms | ActiveRecord: 0.8ms | Allocations: 2113)
+
+
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:10:00 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"Linear Igara", "is_like"=>true, "id_enterprise"=>"13940", "enterprise"=>{"name"=>"Linear Igara", "is_like"=>true, "id_enterprise"=>"13940"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (3.3ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Linear Igara"], ["is_like", 1], ["id_enterprise", 13940], ["created_at", "2021-01-24 22:10:00.418023"], ["updated_at", "2021-01-24 22:10:00.418023"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (16.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 201 Created in 40ms (Views: 0.9ms | ActiveRecord: 19.5ms | Allocations: 2885)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:10:00 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.7ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.7ms | Allocations: 2221)
+
+
+Started PUT "/api/v1/enterprises/6" for 127.0.0.1 at 2021-01-24 19:10:02 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"MRSP 495 Apto 505", "is_like"=>false, "id_enterprise"=>"2023", "id"=>"6", "enterprise"=>{"id"=>"6", "name"=>"MRSP 495 Apto 505", "is_like"=>false, "id_enterprise"=>"2023"}}
+  [1m[36mEnterprise Load (1.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (9.3ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 0], ["updated_at", "2021-01-24 22:10:02.672240"], ["id", 6]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (14.8ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 60ms (Views: 0.9ms | ActiveRecord: 25.5ms | Allocations: 4179)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:10:02 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 19ms (Views: 18.2ms | ActiveRecord: 0.5ms | Allocations: 2222)
+
+
+Started PUT "/api/v1/enterprises/11" for 127.0.0.1 at 2021-01-24 19:10:04 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"NSDGFA 50 Casa 06", "is_like"=>false, "id_enterprise"=>"2962", "id"=>"11", "enterprise"=>{"id"=>"11", "name"=>"NSDGFA 50 Casa 06", "is_like"=>false, "id_enterprise"=>"2962"}}
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (0.7ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 0], ["updated_at", "2021-01-24 22:10:04.790814"], ["id", 11]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (18.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 51ms (Views: 0.8ms | ActiveRecord: 19.7ms | Allocations: 4175)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:10:04 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.7ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 19ms (Views: 15.8ms | ActiveRecord: 0.7ms | Allocations: 2221)
+
+
+Started PUT "/api/v1/enterprises/13" for 127.0.0.1 at 2021-01-24 19:10:06 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0009GITF", "is_like"=>false, "id_enterprise"=>"17924", "id"=>"13", "enterprise"=>{"id"=>"13", "name"=>"Condomínio Life Park Apto AP0009GITF", "is_like"=>false, "id_enterprise"=>"17924"}}
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (3.8ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 0], ["updated_at", "2021-01-24 22:10:06.990219"], ["id", 13]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (15.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 51ms (Views: 0.8ms | ActiveRecord: 20.4ms | Allocations: 4177)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:10:07 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.4ms | Allocations: 2221)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:10:50 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.7ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 16ms (Views: 13.6ms | ActiveRecord: 0.7ms | Allocations: 2221)
+
+
+Started PUT "/api/v1/enterprises/11" for 127.0.0.1 at 2021-01-24 19:10:56 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"NSDGFA 50 Casa 06", "is_like"=>true, "id_enterprise"=>"2962", "id"=>"11", "enterprise"=>{"id"=>"11", "name"=>"NSDGFA 50 Casa 06", "is_like"=>true, "id_enterprise"=>"2962"}}
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (6.2ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 1], ["updated_at", "2021-01-24 22:10:56.066997"], ["id", 11]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (15.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 51ms (Views: 1.2ms | ActiveRecord: 22.3ms | Allocations: 4176)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:10:56 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.6ms | Allocations: 2221)
+
+
+Started PUT "/api/v1/enterprises/6" for 127.0.0.1 at 2021-01-24 19:10:57 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"MRSP 495 Apto 505", "is_like"=>true, "id_enterprise"=>"2023", "id"=>"6", "enterprise"=>{"id"=>"6", "name"=>"MRSP 495 Apto 505", "is_like"=>true, "id_enterprise"=>"2023"}}
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (1.8ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 1], ["updated_at", "2021-01-24 22:10:57.327582"], ["id", 6]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (9.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 46ms (Views: 1.1ms | ActiveRecord: 11.7ms | Allocations: 4175)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:10:57 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.9ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 20ms (Views: 18.7ms | ActiveRecord: 0.9ms | Allocations: 2221)
+
+
+Started PUT "/api/v1/enterprises/4" for 127.0.0.1 at 2021-01-24 19:11:01 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>false, "id_enterprise"=>"17922", "id"=>"4", "enterprise"=>{"id"=>"4", "name"=>"Condomínio Life Park Apto AP0011GITF", "is_like"=>false, "id_enterprise"=>"17922"}}
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (8.0ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 0], ["updated_at", "2021-01-24 22:11:01.064215"], ["id", 4]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 35ms (Views: 0.8ms | ActiveRecord: 16.7ms | Allocations: 4177)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:11:01 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.4ms | Allocations: 2221)
+
+
+Started PUT "/api/v1/enterprises/2" for 127.0.0.1 at 2021-01-24 19:11:02 -0300
+Processing by Api::V1::EnterprisesController#update as HTML
+  Parameters: {"name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921", "id"=>"2", "enterprise"=>{"id"=>"2", "name"=>"Condomínio Life Park Apto AP0012GITF", "is_like"=>false, "id_enterprise"=>"17921"}}
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises" WHERE "enterprises"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:44:in `set_enterprise'
+[31mUnpermitted parameter: :id[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mEnterprise Update (8.2ms)[0m  [1m[33mUPDATE "enterprises" SET "is_like" = ?, "updated_at" = ? WHERE "enterprises"."id" = ?[0m  [["is_like", 0], ["updated_at", "2021-01-24 22:11:02.260522"], ["id", 2]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+  [1m[36mTRANSACTION (23.7ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:29:in `update'
+Completed 200 OK in 54ms (Views: 3.6ms | ActiveRecord: 32.6ms | Allocations: 3724)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:11:02 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 23ms (Views: 21.4ms | ActiveRecord: 0.6ms | Allocations: 2221)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:13:29 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 31ms (Views: 29.7ms | ActiveRecord: 0.4ms | Allocations: 2221)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:15:15 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.7ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 0.7ms | Allocations: 2221)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:16:28 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 51ms (Views: 49.4ms | ActiveRecord: 0.6ms | Allocations: 2221)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:17:05 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (1.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 53ms (Views: 48.0ms | ActiveRecord: 1.3ms | Allocations: 2221)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:17:28 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 31ms (Views: 29.5ms | ActiveRecord: 0.5ms | Allocations: 2221)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:21:31 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.9ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 23ms (Views: 21.1ms | ActiveRecord: 0.9ms | Allocations: 2221)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:29:31 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+  [1m[36mEnterprise Load (2.5ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 94ms (Views: 77.7ms | ActiveRecord: 6.4ms | Allocations: 2790)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:29:40 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.4ms | Allocations: 2221)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:29:44 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.3ms | Allocations: 2221)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:29:50 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 9.3ms | ActiveRecord: 0.4ms | Allocations: 2221)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:29:54 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 16.1ms | ActiveRecord: 0.3ms | Allocations: 2222)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:30:01 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (2.9ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 11ms (Views: 7.8ms | ActiveRecord: 2.9ms | Allocations: 2222)
+
+
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:30:03 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"Gran Palace", "is_like"=>true, "id_enterprise"=>"683", "enterprise"=>{"name"=>"Gran Palace", "is_like"=>true, "id_enterprise"=>"683"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (3.4ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Gran Palace"], ["is_like", 1], ["id_enterprise", 683], ["created_at", "2021-01-24 22:30:03.681235"], ["updated_at", "2021-01-24 22:30:03.681235"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (10.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 201 Created in 25ms (Views: 0.5ms | ActiveRecord: 13.7ms | Allocations: 3704)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:30:03 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 11.2ms | ActiveRecord: 0.4ms | Allocations: 2329)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:30:51 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 17ms (Views: 15.5ms | ActiveRecord: 0.6ms | Allocations: 2329)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:31:20 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.3ms | Allocations: 2329)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:31:38 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.4ms | Allocations: 2329)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:34:14 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 48ms (Views: 46.5ms | ActiveRecord: 0.6ms | Allocations: 2329)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:36:55 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.2ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 11.9ms | ActiveRecord: 0.2ms | Allocations: 2329)
+
+
+Started POST "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:37:08 -0300
+Processing by Api::V1::EnterprisesController#create as HTML
+  Parameters: {"name"=>"IRN 665 Casa SO0015GITF", "is_like"=>true, "id_enterprise"=>"17546", "enterprise"=>{"name"=>"IRN 665 Casa SO0015GITF", "is_like"=>true, "id_enterprise"=>"17546"}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mEnterprise Create (7.4ms)[0m  [1m[32mINSERT INTO "enterprises" ("name", "is_like", "id_enterprise", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "IRN 665 Casa SO0015GITF"], ["is_like", 1], ["id_enterprise", 17546], ["created_at", "2021-01-24 22:37:08.558540"], ["updated_at", "2021-01-24 22:37:08.558540"]]
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (13.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:20:in `create'
+Completed 201 Created in 43ms (Views: 0.6ms | ActiveRecord: 21.4ms | Allocations: 3704)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:37:08 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.4ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 0.4ms | Allocations: 2437)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:37:22 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.3ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.3ms | Allocations: 2437)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:37:33 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.8ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.8ms | Allocations: 2437)
+
+
+Started GET "/api/v1/enterprises" for 127.0.0.1 at 2021-01-24 19:37:40 -0300
+Processing by Api::V1::EnterprisesController#index as HTML
+  [1m[36mEnterprise Load (0.6ms)[0m  [1m[34mSELECT "enterprises".* FROM "enterprises"[0m
+  ↳ app/controllers/api/v1/enterprises_controller.rb:8:in `index'
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.6ms | Allocations: 2437)
+
+
