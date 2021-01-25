@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const token = '';
+const token = 'VDqfisFJS9-8yiLluw3fvII-lILi7WjHNjDGAg9jMbU';
 
 const callBuildings = (page = 1) => {
   return new Promise(async (resolve, reject) => {
