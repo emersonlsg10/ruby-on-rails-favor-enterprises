@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import Filters from './components/filters';
-// import SearchField from './components/searchField';
 import BuildingsList from "./components/buildingsList";
 import PaginationControlled from "./components/pagination";
 import { makeStyles } from "@material-ui/core/styles";
@@ -36,10 +34,12 @@ function App() {
 
   const [listBuildings, setListBuildings] = useState(null);
   const [totalBuildings, setTotalBuildings] = useState(null);
+
   const [listFavorites, setListFavorites] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const [page, setPage] = useState(1);
+  var pageSession = sessionStorage.getItem("page");
+  const [page, setPage] = useState(pageSession || 1);
 
   const handleUpdateFavourites = () => {
     setTimeout(async () => {
@@ -53,24 +53,19 @@ function App() {
   const getBuildings = async (params = "") => {
     setLoading(true);
     const responseBuildings = await callBuildings(params);
-    const responseFavorites = await getFavorites();
 
     if (responseBuildings && responseBuildings.buildings) {
       setListBuildings(responseBuildings.buildings);
       setTotalBuildings(responseBuildings.total);
     }
 
-    if (responseFavorites) {
-      setListFavorites(responseFavorites);
-    }
-
-    setTimeout(() => {
-      setLoading(false);
-    }, 500);
+    setLoading(false);
   };
 
   useEffect(() => {
+    sessionStorage.setItem("page", page);
     getBuildings(page);
+    handleUpdateFavourites();
   }, [page]);
 
   return (
@@ -82,7 +77,7 @@ function App() {
         <div>
           <div className={classes.title}>Lista de Empreendimentos</div>
           <div className={classes.container}>
-            <PaginationControlled onChange={setPage} total={totalBuildings} />
+            <PaginationControlled pageSession={parseInt(pageSession) || 1} onChange={setPage} total={totalBuildings} />
           </div>
         </div>
       </div>

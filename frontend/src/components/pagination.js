@@ -15,10 +15,11 @@ export default function PaginationControlled({
   onChange,
   total = 1,
   perPage = 12,
+  pageSession
 }) {
   const classes = useStyles();
   const qntPages = Math.ceil(total / perPage);
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = React.useState(pageSession);
   const handleChange = (event, value) => {
     setPage(value);
     onChange(value);
@@ -37,11 +38,6 @@ export default function PaginationControlled({
           />
         </div>
       )}
-      {/* <style global jsx>{`
-        .MuiPaginationItem-root {
-          color: white !important;
-        }
-      `}</style> */}
     </>
   );
 }

@@ -1,19 +1,15 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
-import Collapse from "@material-ui/core/Collapse";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
 
 import createFavorites from "../hooks/favorites/createFavorites";
 import updateFavorites from "../hooks/favorites/updateFavorites";
@@ -21,7 +17,7 @@ import updateFavorites from "../hooks/favorites/updateFavorites";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: 345,
-    height: 420,
+    minHeight: 420,
     margin: 10,
   },
   media: {
@@ -39,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     transform: "rotate(180deg)",
   },
   avatar: {
-    backgroundColor: '#3f51b5',
+    backgroundColor: "#3f51b5",
   },
   selected: {
     fontSize: 30,
@@ -57,12 +53,6 @@ function BuildingsList({
   handleUpdateFavourites,
 }) {
   const classes = useStyles();
-
-  const [expanded, setExpanded] = React.useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   const isFavourite = (id) => {
     return listFavorites.find(
@@ -89,17 +79,25 @@ function BuildingsList({
     handleUpdateFavourites();
   };
 
+  const formatPrice = (value) =>
+    parseFloat(value).toLocaleString("pt-BR", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+      style: "currency",
+      currency: "BRL",
+    });
+
   return (
     <>
       {listBuildings &&
-        listFavorites.length &&
+        listFavorites.length > 0 &&
         listBuildings.map((value, index) => {
           return (
             <Card className={classes.root}>
               <CardHeader
                 avatar={
                   <Avatar aria-label="recipe" className={classes.avatar}>
-                    {value.name[0]}
+                    {value.publisher.name[0]}
                   </Avatar>
                 }
                 title={value.publisher.name}
@@ -111,8 +109,9 @@ function BuildingsList({
                 title="Paella dish"
               />
               <CardContent style={{ height: 60 }}>
-                <Typography variant="h6" color="textSecondary" component="p">
-                  {value.name}
+                <Typography variant="h6" color="primary" component="p">
+                  {value.name} - Preço mínimo:{" "}
+                  {`${formatPrice(value.min_price)}`}
                 </Typography>
               </CardContent>
               <CardActions disableSpacing>
@@ -131,26 +130,7 @@ function BuildingsList({
                 <IconButton aria-label="share">
                   <ShareIcon />
                 </IconButton>
-                <IconButton
-                  className={clsx(classes.expand, {
-                    [classes.expandOpen]: expanded,
-                  })}
-                  onClick={handleExpandClick}
-                  aria-expanded={expanded}
-                  aria-label="show more"
-                >
-                  <ExpandMoreIcon />
-                </IconButton>
               </CardActions>
-              <Collapse in={expanded} timeout="auto" unmountOnExit>
-                <CardContent>
-                  <Typography paragraph>Method:</Typography>
-                  <Typography paragraph>
-                    Heat 1/2 cup of the broth in a pot until simmering, add
-                    saffron and set aside for 10 minutes.
-                  </Typography>
-                </CardContent>
-              </Collapse>
             </Card>
           );
         })}
